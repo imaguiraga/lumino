@@ -44,7 +44,33 @@ class CodeMirrorWidget extends Widget {
   constructor(config?: CodeMirror.EditorConfiguration) {
     super();
     this.addClass('CodeMirrorWidget');
-    this._editor = CodeMirror(this.node, config);
+
+    let div = document.createElement('div');
+    div.setAttribute("style","padding:4px");
+
+    let selectElt = document.createElement('select');
+    selectElt.setAttribute("id","flow-sample-select");
+    selectElt.setAttribute("class","flow-select");
+
+    div.appendChild(selectElt);
+
+    let opt = document.createElement('option');
+    opt.value = "Option 1";
+    opt.text = "Option 1";
+    selectElt.add(opt);
+
+    let separator = document.createElement('div');
+    separator.setAttribute("class","separator");
+
+    let content = document.createElement('div');
+    content.setAttribute("id","editor-pane");
+    content.setAttribute("class","content-pane");
+
+    this.node.appendChild(div);
+    this.node.appendChild(separator);
+    this.node.appendChild(content);
+
+    this._editor = CodeMirror(content, config);
   }
 
   get editor(): CodeMirror.Editor {
