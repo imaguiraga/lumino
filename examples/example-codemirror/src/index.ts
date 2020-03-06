@@ -15,92 +15,11 @@ import {
 } from '@lumino/commands';
 
 import {
-  Message
-} from '@lumino/messaging';
-
-import {
   BoxPanel, CommandPalette, ContextMenu, DockPanel, Menu, MenuBar, Widget
 } from '@lumino/widgets';
 
-import CodeMirror from "codemirror";
-import "codemirror/lib/codemirror.css";
-import "codemirror/mode/javascript/javascript.js";
-import "codemirror/mode/css/css.js";
-import "codemirror/addon/display/panel.js";
-import "codemirror/addon/lint/lint.js";
-import "codemirror/addon/lint/javascript-lint.js";
-import "codemirror/addon/lint/lint.css";
-import '../style/index.css';
-
-//import './index.css';
-
-//import "tslint";
-//globalThis.JSHINT = JSHINT;
-
-/**
- * A widget which hosts a CodeMirror editor.
- */
-class CodeMirrorWidget extends Widget {
-
-  constructor(config?: CodeMirror.EditorConfiguration) {
-    super();
-    this.addClass('CodeMirrorWidget');
-
-    let div = document.createElement('div');
-    div.setAttribute("style","padding:4px");
-
-    let selectElt = document.createElement('select');
-    selectElt.setAttribute("id","flow-sample-select");
-    selectElt.setAttribute("class","flow-select");
-
-    div.appendChild(selectElt);
-
-    let opt = document.createElement('option');
-    opt.value = "Option 1";
-    opt.text = "Option 1";
-    selectElt.add(opt);
-
-    let separator = document.createElement('div');
-    separator.setAttribute("class","separator");
-
-    let content = document.createElement('div');
-    content.setAttribute("id","editor-pane");
-    content.setAttribute("class","content-pane");
-
-    this.node.appendChild(div);
-    this.node.appendChild(separator);
-    this.node.appendChild(content);
-
-    this._editor = CodeMirror(content, config);
-  }
-
-  get editor(): CodeMirror.Editor {
-    return this._editor;
-  }
-
-  loadTarget(target: string): void {
-    var doc = this._editor.getDoc();
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', target);
-    xhr.onreadystatechange = () => doc.setValue(xhr.responseText);
-    xhr.send();
-  }
-
-  protected onAfterAttach(msg: Message): void {
-    this._editor.refresh();
-  }
-
-  protected onResize(msg: Widget.ResizeMessage): void {
-    if (msg.width < 0 || msg.height < 0) {
-      this._editor.refresh();
-    } else {
-      this._editor.setSize(msg.width, msg.height);
-    }
-  }
-
-  private _editor: CodeMirror.Editor;
-}
-
+import { CodeMirrorWidget } from "./codemirror-widget";
+import { ContentWidget } from "./content-widget";
 
 const commands = new CommandRegistry();
 
@@ -139,40 +58,6 @@ function createMenu(): Menu {
   root.addItem({ command: 'example:close' });
 
   return root;
-}
-
-
-class ContentWidget extends Widget {
-
-  static createNode(): HTMLElement {
-    let node = document.createElement('div');
-    let content = document.createElement('div');
-    let input = document.createElement('input');
-    input.placeholder = 'Placeholder...';
-    content.appendChild(input);
-    node.appendChild(content);
-    return node;
-  }
-
-  constructor(name: string) {
-    super({ node: ContentWidget.createNode() });
-    this.setFlag(Widget.Flag.DisallowLayout);
-    this.addClass('content');
-    this.addClass(name.toLowerCase());
-    this.title.label = name;
-    this.title.closable = true;
-    this.title.caption = `Long description for: ${name}`;
-  }
-
-  get inputNode(): HTMLInputElement {
-    return this.node.getElementsByTagName('input')[0] as HTMLInputElement;
-  }
-
-  protected onActivateRequest(msg: Message): void {
-    if (this.isAttached) {
-      this.inputNode.focus();
-    }
-  }
 }
 
 
