@@ -388,11 +388,11 @@ function main(): void {
 
   let r1: Widget = new ContentWidget('Red');
   let b1: Widget = new ContentWidget('Blue');
-  let g1 = new ContentWidget('Green');
-  let y1 = new ContentWidget('Yellow');
+  //let g1 = new ContentWidget('Green');
+  //let y1 = new ContentWidget('Yellow');
 
-  let r2 = new ContentWidget('Red');
-  let b2 = new ContentWidget('Blue');
+  //let r2 = new ContentWidget('Red');
+  //let b2 = new ContentWidget('Blue');
 
 
   var cmSource = new CodeMirrorWidget({
@@ -416,10 +416,10 @@ function main(): void {
   b1 = cmCss;
   dock.addWidget(r1);
   dock.addWidget(b1, { mode: 'split-right', ref: r1 });
-  dock.addWidget(y1, { mode: 'split-bottom', ref: b1 });
-  dock.addWidget(g1, { mode: 'split-left', ref: y1 });
-  dock.addWidget(r2, { ref: b1 });
-  dock.addWidget(b2, { mode: 'split-right', ref: y1 });
+  //dock.addWidget(y1, { mode: 'split-bottom', ref: b1 });
+  //dock.addWidget(g1, { mode: 'split-left', ref: y1 });
+  //dock.addWidget(r2, { ref: b1 });
+  //dock.addWidget(b2, { mode: 'split-right', ref: y1 });
   dock.id = 'dock';
 
   let savedLayouts: DockPanel.ILayoutConfig[] = [];
