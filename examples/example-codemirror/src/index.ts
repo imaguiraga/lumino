@@ -21,8 +21,9 @@ import {
 import { CodeMirrorWidget } from "./codemirror-widget";
 import { ContentWidget } from "./content-widget";
 
-const commands = new CommandRegistry();
+import '../style/index.css';
 
+const commands = new CommandRegistry();
 
 function createMenu(): Menu {
   let sub1 = new Menu({ commands });
