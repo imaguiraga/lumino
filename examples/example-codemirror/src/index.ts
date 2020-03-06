@@ -20,6 +20,7 @@ import {
 
 import { CodeMirrorWidget } from "./codemirror-widget";
 import { ContentWidget } from "./content-widget";
+import { G6GraphWidget } from "./g6graph-widget";
 
 import '../style/index.css';
 
@@ -302,6 +303,7 @@ function main(): void {
 
   let r1: Widget = new ContentWidget('Red');
   let b1: Widget = new ContentWidget('Blue');
+  let c1: Widget = new G6GraphWidget();
   //let g1 = new ContentWidget('Green');
   //let y1 = new ContentWidget('Yellow');
 
@@ -330,6 +332,7 @@ function main(): void {
   b1 = cmCss;
   dock.addWidget(r1);
   dock.addWidget(b1, { mode: 'split-right', ref: r1 });
+  dock.addWidget(c1, { mode: 'split-bottom', ref: r1 });
   //dock.addWidget(y1, { mode: 'split-bottom', ref: b1 });
   //dock.addWidget(g1, { mode: 'split-left', ref: y1 });
   //dock.addWidget(r2, { ref: b1 });
