@@ -7,6 +7,7 @@
 |
 | The full license is in the file LICENSE, distributed with this software.
 |----------------------------------------------------------------------------*/
+/* tslint:disable */ 
 import 'es6-promise/auto';  // polyfill Promise on IE
 
 import {
@@ -456,13 +457,25 @@ function main(): void {
 
   let main = new BoxPanel({ direction: 'left-to-right', spacing: 0 });
   main.id = 'main';
-  main.addWidget(palette);
-  main.addWidget(dock);
 
+  main.addWidget(dock);
+  /*
+  let main2 = new BoxPanel({ direction: 'top-to-bottom', spacing: 0 });
+  main2.id = 'main2';
+
+  
+    let w = new Widget();
+    Widget.attach(w,document.createElement("select"));
+    main2.addWidget(w);
+    BoxPanel.setStretch(main, 1);
+    main2.addWidget(main);
+    //*/
   window.onresize = () => { main.update(); };
 
   Widget.attach(bar, document.body);
   Widget.attach(main, document.body);
+  //*/
+
 }
 
 
