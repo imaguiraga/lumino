@@ -7,6 +7,8 @@
     "strictNullChecks": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
     "target": "ES5",
     "outDir": "./build",
     "lib": ["ES5", "ES2015.Promise", "ES2015.Iterable", "DOM"],
