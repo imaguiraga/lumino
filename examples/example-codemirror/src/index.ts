@@ -25,6 +25,7 @@ import {
 import CodeMirror from "codemirror";
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript.js";
+import "codemirror/mode/css/css.js";
 import "codemirror/addon/display/panel.js";
 import "codemirror/addon/lint/lint.js";
 import "codemirror/addon/lint/javascript-lint.js";
