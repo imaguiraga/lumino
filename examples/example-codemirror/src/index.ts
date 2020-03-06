@@ -21,9 +21,6 @@ import {
   BoxPanel, CommandPalette, ContextMenu, DockPanel, Menu, MenuBar, Widget
 } from '@lumino/widgets';
 
-import '../style/index.css';
-
-import './index.css';
 import CodeMirror from "codemirror";
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript.js";
@@ -31,10 +28,12 @@ import "codemirror/addon/display/panel.js";
 import "codemirror/addon/lint/lint.js";
 import "codemirror/addon/lint/javascript-lint.js";
 import "codemirror/addon/lint/lint.css";
+import '../style/index.css';
 
-import { JSHINT } from "jshint";
-//window.JSHINT = JSHINT;
+//import './index.css';
 
+//import "tslint";
+//globalThis.JSHINT = JSHINT;
 
 /**
  * A widget which hosts a CodeMirror editor.
@@ -401,7 +400,7 @@ function main(): void {
     lineNumbers: true,
     tabSize: 2,
   });
-  cmSource.loadTarget('./index.ts');
+  cmSource.loadTarget('./src/index.ts');
   cmSource.title.label = 'Source';
 
   var cmCss = new CodeMirrorWidget({
@@ -409,7 +408,7 @@ function main(): void {
     lineNumbers: true,
     tabSize: 2,
   });
-  cmCss.loadTarget('./index.css');
+  cmCss.loadTarget('./src/index.css');
   cmCss.title.label = 'CSS';
 
   let dock = new DockPanel();
