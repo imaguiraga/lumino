@@ -317,7 +317,7 @@ export class G6GraphWidget extends Widget {
     this.graph.render();
     this.graph.zoom(this.node.scrollWidth/this.graph.cfg.width);
     //this.graph.fitView(10);
-    //this.graph.translate(this.node.scrollWidth/2, this.node.scrollHeight/2);
+    this.graph.translate(this.node.scrollWidth/2, 0);
     
   }
 
