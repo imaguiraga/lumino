@@ -252,10 +252,32 @@ export class G6GraphWidget extends Widget {
     this.title.label = "G6 Graph";
     this.title.closable = true;
     this.title.caption = `Long description for:G6 Graph`;
-    this.div = document.createElement('div');
-    this.node.appendChild(this.div);
+    let div = document.createElement('div');
+    div.setAttribute("style","padding:4px");
+    this.node.appendChild(div);
+
+    let selectElt = document.createElement('select');
+    selectElt.setAttribute("id","flow-dagram-select");
+    selectElt.setAttribute("class","flow-select");
+
+    div.appendChild(selectElt);
+
+    let opt = document.createElement('option');
+    opt.value = "Option 1";
+    opt.text = "Option 1";
+    selectElt.add(opt);
+    
+    let separator = document.createElement('div');
+    separator.setAttribute("class","separator");   
+    this.node.appendChild(separator);
+
+    let content = document.createElement('div');
+    content.setAttribute("id","editor-pane");
+    content.setAttribute("class","content-pane");
+    this.node.appendChild(content);
+
     this.graph = new G6.Graph({
-        container: this.div,
+        container: content,
         width: 500,//this.node.scrollWidth ,
         height: 500,//this.node.scrollHeight,
         layout: {

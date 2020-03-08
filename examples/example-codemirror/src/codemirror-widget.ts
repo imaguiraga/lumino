@@ -35,6 +35,7 @@ export class CodeMirrorWidget extends Widget {
 
     let div = document.createElement('div');
     div.setAttribute("style","padding:4px");
+    this.node.appendChild(div);
 
     let selectElt = document.createElement('select');
     selectElt.setAttribute("id","flow-sample-select");
@@ -49,15 +50,13 @@ export class CodeMirrorWidget extends Widget {
 
     let separator = document.createElement('div');
     separator.setAttribute("class","separator");
+    this.node.appendChild(separator);
 
     let content = document.createElement('div');
     content.setAttribute("id","editor-pane");
     content.setAttribute("class","content-pane");
-
-    this.node.appendChild(div);
-    this.node.appendChild(separator);
     this.node.appendChild(content);
-
+    
     this._editor = CodeMirror(content, config);
   }
 
