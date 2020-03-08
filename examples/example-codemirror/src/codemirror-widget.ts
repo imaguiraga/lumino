@@ -34,7 +34,7 @@ export class CodeMirrorWidget extends Widget {
     this.addClass('CodeMirrorWidget');
 
     let div = document.createElement('div');
-    div.setAttribute("style","padding:4px");
+    div.setAttribute("style","padding:4px;background-color: #dfdfdf;");
     this.node.appendChild(div);
 
     let selectElt = document.createElement('select');

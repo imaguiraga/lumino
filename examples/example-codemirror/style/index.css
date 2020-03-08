@@ -14,6 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
+  background-color: #fbfbfb;
   top: 0;
   left: 0;
   right: 0;
@@ -57,6 +58,7 @@ body {
     border-bottom: 1px solid transparent;
     background-color: #dfdfdf;
 }
+
 .p-TabBar-tab, .lm-TabBar-tab {
     /*
     padding: 0px 10px;

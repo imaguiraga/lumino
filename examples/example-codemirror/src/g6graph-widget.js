@@ -255,7 +255,7 @@ export class G6GraphWidget extends Widget {
     this.title.caption = `Long description for:G6 Graph`;
 
     let div = document.createElement('div'); 
-    div.setAttribute("style","padding:4px");
+    div.setAttribute("style","padding:4px;background-color: #dfdfdf;");
     this.node.appendChild(div);
 
     let selectElt = document.createElement('select');
