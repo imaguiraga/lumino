@@ -1,4 +1,5 @@
 import G6 from '@antv/g6';
+//import './widget.css';
 
 const data = {
   nodes: [
@@ -252,16 +253,16 @@ export class G6GraphWidget extends Widget {
     this.title.label = "G6 Graph";
     this.title.closable = true;
     this.title.caption = `Long description for:G6 Graph`;
-    let div = document.createElement('div');
+
+    let div = document.createElement('div'); 
     div.setAttribute("style","padding:4px");
     this.node.appendChild(div);
 
     let selectElt = document.createElement('select');
     selectElt.setAttribute("id","flow-dagram-select");
     selectElt.setAttribute("class","flow-select");
-
     div.appendChild(selectElt);
-
+    
     let opt = document.createElement('option');
     opt.value = "Option 1";
     opt.text = "Option 1";
@@ -272,7 +273,7 @@ export class G6GraphWidget extends Widget {
     this.node.appendChild(separator);
 
     let content = document.createElement('div');
-    content.setAttribute("id","editor-pane");
+    content.setAttribute("id","preview-pane");
     content.setAttribute("class","content-pane");
     this.node.appendChild(content);
 
