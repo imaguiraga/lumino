@@ -258,22 +258,20 @@ export class G6GraphWidget extends Widget {
     div.setAttribute("style","padding:4px;background-color: #dfdfdf;");
     this.node.appendChild(div);
 
-    let selectElt = document.createElement('select');
-    selectElt.setAttribute("id","flow-dagram-select");
-    selectElt.setAttribute("class","flow-select");
-    div.appendChild(selectElt);
+    this.selectElt = document.createElement('select');
+    this.selectElt.setAttribute("class","flow-select");
+    div.appendChild(this.selectElt);
     
     let opt = document.createElement('option');
     opt.value = "Option 1";
     opt.text = "Option 1";
-    selectElt.add(opt);
+    this.selectElt.add(opt);
     
     let separator = document.createElement('div');
     separator.setAttribute("class","separator");   
     this.node.appendChild(separator);
 
     let content = document.createElement('div');
-    content.setAttribute("id","preview-pane");
     content.setAttribute("class","content-pane");
     this.node.appendChild(content);
 

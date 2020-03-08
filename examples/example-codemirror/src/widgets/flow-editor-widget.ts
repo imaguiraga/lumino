@@ -38,7 +38,6 @@ export class FlowEditorWidget extends Widget {
     this.node.appendChild(div);
 
     this.selectElt = document.createElement('select');
-    //selectElt.setAttribute("id","flow-sample-select");
     this.selectElt.setAttribute("class","flow-select");
 
     div.appendChild(this.selectElt);
@@ -53,7 +52,6 @@ export class FlowEditorWidget extends Widget {
     this.node.appendChild(separator);
 
     let content = document.createElement('div');
-    content.setAttribute("id","editor-pane");
     content.setAttribute("class","content-pane");
     this.node.appendChild(content);
     

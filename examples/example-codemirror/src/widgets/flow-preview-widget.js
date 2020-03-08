@@ -259,14 +259,13 @@ export class FlowPreviewWidget extends Widget {
     this.node.appendChild(div);
 
     this.selectElt = document.createElement('select');
-    this.selectElt.setAttribute("id","flow-dagram-select");
     this.selectElt.setAttribute("class","flow-select");
     div.appendChild(this.selectElt);
     
     let opt = document.createElement('option');
     opt.value = "Option 1";
     opt.text = "Option 1";
-    selectElt.add(opt);
+    this.selectElt.add(opt);
     
     let separator = document.createElement('div');
     separator.setAttribute("class","separator");   
