@@ -27,7 +27,7 @@ import '../style/index.css';
 /**
  * A widget which hosts a CodeMirror editor.
  */
-export class CodeMirrorWidget extends Widget {
+export class FlowDslWidget extends Widget {
 
   constructor(config?: CodeMirror.EditorConfiguration) {
     super();

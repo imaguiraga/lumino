@@ -301,17 +301,9 @@ function main(): void {
     commands.processKeydownEvent(event);
   });
 
-  let r1: Widget = new ContentWidget('Red');
-  let b1: Widget = new ContentWidget('Blue');
-  let c1: Widget = new G6GraphWidget();
-  //let g1 = new ContentWidget('Green');
-  //let y1 = new ContentWidget('Yellow');
+  let g6graph: Widget = new G6GraphWidget();
 
-  //let r2 = new ContentWidget('Red');
-  //let b2 = new ContentWidget('Blue');
-
-
-  var cmSource = new CodeMirrorWidget({
+  let cmSource = new CodeMirrorWidget({
     mode: 'text/typescript',
     lineNumbers: true,
     tabSize: 2,
@@ -319,7 +311,7 @@ function main(): void {
   cmSource.loadTarget('./src/index.ts');
   cmSource.title.label = 'Source';
 
-  var cmCss = new CodeMirrorWidget({
+  let cmCss = new CodeMirrorWidget({
     mode: 'text/css',
     lineNumbers: true,
     tabSize: 2,
@@ -328,15 +320,11 @@ function main(): void {
   cmCss.title.label = 'CSS';
 
   let dock = new DockPanel();
-  r1 = cmSource;
-  b1 = cmCss;
-  dock.addWidget(r1);
-  dock.addWidget(b1, { mode: 'split-right', ref: r1 });
-  dock.addWidget(c1, { mode: 'split-bottom', ref: r1 });
-  //dock.addWidget(y1, { mode: 'split-bottom', ref: b1 });
-  //dock.addWidget(g1, { mode: 'split-left', ref: y1 });
-  //dock.addWidget(r2, { ref: b1 });
-  //dock.addWidget(b2, { mode: 'split-right', ref: y1 });
+
+  dock.addWidget(cmSource);
+  dock.addWidget(cmCss, { mode: 'split-right', ref: cmSource });
+  dock.addWidget(g6graph, { mode: 'split-bottom', ref: cmSource });
+
   dock.id = 'dock';
 
   let savedLayouts: DockPanel.ILayoutConfig[] = [];
@@ -375,22 +363,10 @@ function main(): void {
   main.id = 'main';
 
   main.addWidget(dock);
-  /*
-  let main2 = new BoxPanel({ direction: 'top-to-bottom', spacing: 0 });
-  main2.id = 'main2';
-
-  
-    let w = new Widget();
-    Widget.attach(w,document.createElement("select"));
-    main2.addWidget(w);
-    BoxPanel.setStretch(main, 1);
-    main2.addWidget(main);
-    //*/
   window.onresize = () => { main.update(); };
 
   Widget.attach(bar, document.body);
   Widget.attach(main, document.body);
-  //*/
 
 }
 
