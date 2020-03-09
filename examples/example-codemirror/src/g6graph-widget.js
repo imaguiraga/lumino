@@ -273,22 +273,17 @@ export class G6GraphWidget extends Widget {
 
     this.content = document.createElement('div');
     this.content.setAttribute("class","content-pane");
-    this.content.setAttribute("style","width:90%;height:90%");
+    this.content.setAttribute("style","width:100%;height:100%;scroll-behavior: auto;overflow: scroll;");
     this.node.appendChild(this.content);
-
-  }
-
-  onAfterAttach(msg) {
-    //this.graph.changeSize(this.content.scrollWidth, this.content.scrollHeight);    
     this.graph = new G6.Graph({
         container: this.content,
-        width: this.content.scrollWidth ,
-        height: this.content.scrollHeight,
+        width: 640,//this.content.scrollWidth ,
+        height: 640,//this.content.scrollHeight,
         layout: {
             type: 'dagre',
             nodesepFunc: d => {
             if (d.id === '3') {
-                return 500;
+                return 400;
             }
             return 50;
             },
@@ -338,16 +333,29 @@ export class G6GraphWidget extends Widget {
     });
     this.graph.data(data);
     this.graph.fitView(20); 
-    this.graph.render();
+    this.graph.render();//*/
+
+    console.log(`ctor : W${this.content.scrollWidth} - H${this.content.scrollHeight}`);
+  }
+
+  onAfterAttach(msg) {   
+    this.graph.changeSize(this.content.scrollWidth, this.content.scrollHeight);      
+    this.graph.fitView(20); 
+    this.graph.layout();//*/
+    console.log(`onAfterAttach : W${this.content.scrollWidth} - H${this.content.scrollHeight}`);
    
   }
 
   onResize(msg) {
+    console.log(`onResize : W${this.content.scrollWidth} - H${this.content.scrollHeight} # W${msg.width} - H${msg.height}`);
     if(msg.width > 0 && msg.height > 0 ){
-        this.graph.changeSize(this.content.scrollWidth, this.content.scrollHeight); 
+        //this.graph.changeSize(this.content.scrollWidth, this.content.scrollHeight); 
+        this.graph.changeSize(Math.max(msg.width,this.content.scrollWidth), Math.max(msg.height,this.content.scrollHeight)); 
         this.graph.fitView(20); 
-        this.graph.render();
+        this.graph.layout();       
     }
+
+    //*/
   }
 }
 
