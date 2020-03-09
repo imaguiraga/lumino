@@ -19,6 +19,7 @@
     "tslint": "^6.0.0"
   },
   "devDependencies": {
+    "@types/codemirror": "^0.0.87",  
     "css-loader": "^3.4.0",
     "file-loader": "^5.0.2",
     "rimraf": "^2.5.2",
