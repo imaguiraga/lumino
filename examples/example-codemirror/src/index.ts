@@ -19,7 +19,6 @@ import {
 } from '@lumino/widgets';
 
 import { CodeMirrorWidget } from "./codemirror-widget";
-import { ContentWidget } from "./content-widget";
 import { G6GraphWidget } from "./g6graph-widget";
 
 import '../style/index.css';
