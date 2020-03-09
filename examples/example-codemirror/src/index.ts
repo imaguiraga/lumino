@@ -369,5 +369,4 @@ function main(): void {
 
 }
 
-
 window.onload = main;
