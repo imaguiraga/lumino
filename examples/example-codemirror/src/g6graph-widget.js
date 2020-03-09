@@ -355,4 +355,3 @@ export class G6GraphWidget extends Widget {
 
   }
 }
-
